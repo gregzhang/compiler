@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="jquery-1.9.1.min.js"></script>
+    <title>Title111</title>
+</head>
+<body>
+<div id="content">
+</div>
+
+<div id="template">
+
+</div>
+<div id="widget">
+
+</div>
+
+
+<script>
+    function test(data ,fuc) {
+        $(function ($) {
+            $.post('api.php', data, function (res) {
+                console.log(res);
+                fuc(res);
+            },'json');
+        });
+    }
+    test({'theme_list':true},function (res) {
+        var html='';
+        for(var i in  res){
+            html += '<a href="javascript:void (0);" class="theme">'+ res[i].name +'</a><br>';
+        }
+        $('#content').html(html);
+
+        $('a.theme').on('click',function (e) {
+            test({'theme_name':$(this).html()},function (res) {
+                html = '';
+                for(var i in res.template){
+                    html += '<a href="javascript:void (0);" class="template">'+ res.template[i].name +'</a><br>';
+                }
+                $('#template').html(html);
+
+                html = '';
+                for(var i in res.widget){
+                    html += '<a href="javascript:void (0);" class="template">'+ res.widget[i].name +'</a><br>';
+                }
+                $('#widget').html(html);
+            });
+
+        });
+
+    });
+
+</script>
+</body>
+</html>
