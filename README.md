@@ -1,3 +1,4 @@
-# compiler plugin
+# Compiler Plugin
 
-# Compiler is a php visual template editing plugin
+## About
+Compiler is a php visual template editing plugin
