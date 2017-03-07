@@ -1,3 +1,3 @@
-# compiler
+# compiler plugin
 
-# 可视化模板编辑插件
+# Compiler is a php visual template editing plugin
